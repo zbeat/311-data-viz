@@ -178,15 +178,15 @@ function(app) {
  
     events: {
       "change #slAreaA" : function(e) {
-        this.modelA.url = "http://freaky-mustard-data.herokuapp.com/api/v1/" +
+        this.modelA.url = "http://chicagoworks-api.herokuapp.com/api/v1/" +
           e.currentTarget.value +
-          "/summary?start=2004-09-01&end=2012-12-12&callback=?";
+          "/summary?start=2004-09-01&end=2013-02-19&callback=?";
         this.modelA.fetch({success: this.modelA.successCallback, error: this.modelA.errorCallback});
       },
       "change #slAreaB" : function(e) {
-        this.modelB.url = "http://freaky-mustard-data.herokuapp.com/api/v1/" +
+        this.modelB.url = "http://chicagoworks-api.herokuapp.com/api/v1/" +
           e.currentTarget.value +
-          "/summary?start=2004-09-01&end=2012-12-12&callback=?";
+          "/summary?start=2004-09-01&end=2013-02-19&callback=?";
         this.modelB.fetch({success: this.modelB.successCallback, error: this.modelB.errorCallback});
       },
       "change #slServiceRequest" : function(e) {
