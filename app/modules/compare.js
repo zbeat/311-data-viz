@@ -180,13 +180,15 @@ function(app) {
       "change #slAreaA" : function(e) {
         this.modelA.url = "http://chicagoworks-api.herokuapp.com/api/v1/" +
           e.currentTarget.value +
-          "/summary?start=2004-09-01&end=2013-02-19&callback=?";
+          "/summary?start=2004-09-01&end=" + 
+          this.currentDateString() + "&callback=?";
         this.modelA.fetch({success: this.modelA.successCallback, error: this.modelA.errorCallback});
       },
       "change #slAreaB" : function(e) {
         this.modelB.url = "http://chicagoworks-api.herokuapp.com/api/v1/" +
           e.currentTarget.value +
-          "/summary?start=2004-09-01&end=2013-02-19&callback=?";
+          "/summary?start=2004-09-01&end=" + 
+          this.currentDateString() + "&callback=?";
         this.modelB.fetch({success: this.modelB.successCallback, error: this.modelB.errorCallback});
       },
       "change #slServiceRequest" : function(e) {
@@ -203,6 +205,17 @@ function(app) {
 
       }
     },
+
+    currentDateString: function(){
+      // return the date in format: yyyy-mm-dd
+      // for use in comparison queries to API
+      d = new Date();
+      year = d.getUTCFullYear();
+      month = d.getUTCMonth() + 1; // zero-indexed
+      day = d.getUTCDate();
+      
+      return year + "-" + month + "-" + day;
+    }, 
 
     beforeRender: function(ev) {
       this.insertView(".areas", new Compare.Views.Area({
