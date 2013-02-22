@@ -175,21 +175,13 @@ function(app) {
 
     modelA: new Compare.Model(),
     modelB: new Compare.Model(),
- 
+
     events: {
       "change #slAreaA" : function(e) {
-        this.modelA.url = "http://chicagoworks-api.herokuapp.com/api/v1/" +
-          e.currentTarget.value +
-          "/summary?start=2004-09-01&end=" + 
-          this.currentDateString() + "&callback=?";
-        this.modelA.fetch({success: this.modelA.successCallback, error: this.modelA.errorCallback});
+        this.loadDataForArea(this.modelA, e.currentTarget.value);
       },
       "change #slAreaB" : function(e) {
-        this.modelB.url = "http://chicagoworks-api.herokuapp.com/api/v1/" +
-          e.currentTarget.value +
-          "/summary?start=2004-09-01&end=" + 
-          this.currentDateString() + "&callback=?";
-        this.modelB.fetch({success: this.modelB.successCallback, error: this.modelB.errorCallback});
+        this.loadDataForArea(this.modelB, e.currentTarget.value);
       },
       "change #slServiceRequest" : function(e) {
         var selected = $("#slServiceRequest :selected").text();
@@ -204,6 +196,14 @@ function(app) {
 
 
       }
+    },
+
+    loadDataForArea: function(_model, area){
+      _model.url = "http://chicagoworks-api.herokuapp.com/api/v1/" +
+        area +
+        "/summary?start=2004-09-01&end=" + 
+        this.currentDateString() + "&callback=?";
+      _model.fetch({success: _model.successCallback, error: _model.errorCallback});
     },
 
     currentDateString: function(){
@@ -238,9 +238,18 @@ function(app) {
         areas.push(i);
       }
 
+      console.log("returning: %o", {
+        stats: this.stats,
+        areas: areas,
+        first: this.first,
+        second: this.second
+      }); // FIXME:remove
+
       return {
         stats: this.stats,
-        areas: areas
+        areas: areas,
+        first: this.first,
+        second: this.second
       };
     },
 
