@@ -56,17 +56,16 @@ function(app, Filter, ServiceRequest, Navigation, Map, List, Boundary, City, Gra
       app.trigger("view_change", {view:"graphs"});
     },
     compare: function(first, second){
+      console.log("router: first: %s and second: %s", first, second); //FIXME: remove      
       var view = new Compare.Views.Compare({
         serviceRequests:this.serviceRequests,
         filters:this.filters,
         stats:this.stats,
+        first:first,
+        second:second,
       });
-      console.log("router: first: %s and second: %s", first, second); //FIXME: remove
-      this.first = first;
-      this.second = second;
       app.layout.setView("#content", view).render();
-      app.trigger("view_change", {view:"compare"});
-      
+      // app.trigger("view_change", {view:"compare"});      
     },
     browse: function(){
       app.layout.setView("#content", new Browse.Views.Browse({
@@ -110,7 +109,7 @@ function(app, Filter, ServiceRequest, Navigation, Map, List, Boundary, City, Gra
       }, this);
     },
     handleViewChanged: function(ev){
-      console.log("view changed", ev);
+      console.log("view changed %o", ev);
       var loadview;
 
       if(ev.view == "list"){

@@ -139,6 +139,7 @@ function(app) {
     },
 
     serialize: function () {
+      console.log("Compare.Views.Area serialize: this.model: %o", this.model); //FIXME:remove
       return {
         modelA_ward: this.model.modelA.get("ward"),
         modelA_stats: this.model.modelA.get("stats"),
@@ -173,8 +174,8 @@ function(app) {
     tagName:"div",
     id:"compare",
 
-    modelA: new Compare.Model(),
-    modelB: new Compare.Model(),
+    modelA: new Compare.Model({ward:this.first}),
+    modelB: new Compare.Model({ward:this.second}),
 
     events: {
       "change #slAreaA" : function(e) {
@@ -221,6 +222,8 @@ function(app) {
       this.insertView(".areas", new Compare.Views.Area({
         model: {modelA: this.modelA, modelB: this.modelB}
       }));
+      this.loadDataForArea(this.modelA, this.first);
+      this.loadDataForArea(this.modelB, this.second);      
     },
 
     afterRender: function(ev) {},
@@ -235,10 +238,10 @@ function(app) {
       
       // 50 wards are our areas for now...
       for (var i=1; i<=50; i++) {
-        areas.push(i);
+        areas.push({area:i, isSelectedA: i == this.first, isSelectedB: i == this.second });
       }
 
-      console.log("returning: %o", {
+      console.log("serialize returning: %o", {
         stats: this.stats,
         areas: areas,
         first: this.first,
@@ -254,6 +257,9 @@ function(app) {
     },
 
     initialize: function(o) {
+      console.log("Compare.Views.Compare initialize: o is %o", o); //FIXME: remove
+      this.first = o.first;
+      this.second = o.second;
       this.filters = o.filters;
       this.stats = o.stats;
       this.stats.on("reset", this.render, this);

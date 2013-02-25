@@ -3,13 +3,13 @@
 			<strong>Pick two areas to compare:</strong>
 			<select id="slAreaA">		
 				{{#each areas}}
-				<option value="{{this}}">{{this}}</option>
+				<option value="{{area}}" {{#isSelectedA}}selected="selected"{{/isSelectedA}}>{{area}}</option>
 				{{/each}}
 			</select>
 			<strong>vs</strong>
 	  	<select id="slAreaB">
 				{{#each areas}}
-			  <option value="{{this}}">{{this}}</option>
+			  <option value="{{area}}" {{#isSelectedB}}selected="selected"{{/isSelectedB}}>{{area}}</option>
 			  {{/each}}
 	    </select>  		
 	  </div>
