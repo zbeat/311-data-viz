@@ -1,36 +1,25 @@
-![Boilerplate](https://github.com/tbranyen/backbone-boilerplate/raw/assets/header.png)
+Chicago Works For You
+=====================
 
-Backbone Boilerplate
-====================
+Chicago Works For You is a collection of tools to track and compare 311 requests in Chicago.
 
-This boilerplate is the product of much research and frustration.  Existing
-boilerplates freely modify Backbone core, lack a build process, and are very
-prescriptive; Backbone Boilerplate changes that.
+This project is a fork of the awesome 311.fm application designed and built by Code for America developers [Jesse Bounds](https://github.com/boundsj), [Angel Kittiyachavalit](https://github.com/akit), and [Mick Thompson](https://github.com/dthompson).
 
-Organize your application in a logical filesystem, develop your
-Models/Collections/Views/Routers inside modules, and build knowing you have
-efficient code that will not bottleneck your users.
+Technical Details
+-----------------
 
-Thanks to our
-[Contributors](https://github.com/tbranyen/backbone-boilerplate/contributors)!
+The core application is a node.js app built on the [Backbone Boilerplate](https://github.com/tbranyen/backbone-boilerplate) framework.
 
-Special Thanks to: [cowboy](http://github.com/cowboy),
-[iros](http://github.com/iros), [nimbupani](http://github.com/nimbupani),
-[wookiehangover](http://github.com/wookiehangover), and
-[jugglinmike](http://github.com/jugglinmike) for helping me create this project.
+The application queries a data API for ward comparison statistics. Code for the data API is hosted in the [smartchicago/311-fm-data](https://github.com/smartchicago/311-fm-data) repository. The API operates at http://chicagoworks-api.herokuapp.com/.
 
-Extra Special Thanks to: [Paul Guinan](http://bigredhair.com/work/paul.html)
-for giving me usage rights to his fantastic Boilerplate character.
+To run the server locally, run:
 
-## Documentation ##
+    npm install -g
+    bbb server
 
-View the Backbone Boilerplate documentation here:
+The application will boot and be available at http://localhost:8000/, and query the production API endpoint.
 
-[GitHub Wiki](https://github.com/tbranyen/backbone-boilerplate/wiki)
+Contributing
+------------
 
-## Build process ##
-
-To use the new and improved build process, please visit the 
-[grunt-bbb](https://github.com/backbone-boilerplate/grunt-bbb)
-plugin repo and follow the instructions to install.  Basing your project off
-this repo will allow the `bbb` commands to work out-of-the-box.
+Pull requests, issue reports, and suggestions are welcome.
