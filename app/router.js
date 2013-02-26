@@ -56,7 +56,6 @@ function(app, Filter, ServiceRequest, Navigation, Map, List, Boundary, City, Gra
       app.trigger("view_change", {view:"graphs"});
     },
     compare: function(first, second){
-      console.log("router: first: %s and second: %s", first, second); //FIXME: remove      
       var view = new Compare.Views.Compare({
         serviceRequests:this.serviceRequests,
         filters:this.filters,

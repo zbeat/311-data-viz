@@ -139,7 +139,6 @@ function(app) {
     },
 
     serialize: function () {
-      console.log("Compare.Views.Area serialize: this.model: %o", this.model); //FIXME:remove
       return {
         data_loaded: this.model.modelA.get("ward") != "undefined" && this.model.modelB.get("ward") != "undefined",
         modelA_ward: this.model.modelA.get("ward"),
@@ -244,13 +243,6 @@ function(app) {
         areas.push({area:i, isSelectedA: i == this.first, isSelectedB: i == this.second });
       }
 
-      console.log("serialize returning: %o", {
-        stats: this.stats,
-        areas: areas,
-        first: this.first,
-        second: this.second
-      }); // FIXME:remove
-
       return {
         stats: this.stats,
         areas: areas,
@@ -260,7 +252,6 @@ function(app) {
     },
 
     initialize: function(o) {
-      console.log("Compare.Views.Compare initialize: o is %o", o); //FIXME: remove
       this.first = o.first;
       this.second = o.second;
       this.filters = o.filters;
