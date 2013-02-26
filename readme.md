@@ -25,4 +25,5 @@ The application will boot and be available at http://localhost:8000/, and query 
 Contributing
 ------------
 
-Pull requests, issue reports, and suggestions are welcome.
+Pull requests, issue reports, and suggestions are welcome. The project is supported by the [Smart Chicago Collaborative](http://smartchicagocollaborative.org).
+
