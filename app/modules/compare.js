@@ -180,9 +180,11 @@ function(app) {
     events: {
       "change #slAreaA" : function(e) {
         this.loadDataForArea(this.modelA, e.currentTarget.value);
+        app.router.navigate("/compare/" + e.currentTarget.value + "-" + this.modelB.get('ward'));
       },
       "change #slAreaB" : function(e) {
         this.loadDataForArea(this.modelB, e.currentTarget.value);
+        app.router.navigate("/compare/" + this.modelA.get('ward') + "-" + e.currentTarget.value);
       },
       "change #slServiceRequest" : function(e) {
         var selected = $("#slServiceRequest :selected").text();
