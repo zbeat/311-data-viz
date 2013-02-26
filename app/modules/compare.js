@@ -141,6 +141,7 @@ function(app) {
     serialize: function () {
       console.log("Compare.Views.Area serialize: this.model: %o", this.model); //FIXME:remove
       return {
+        data_loaded: this.model.modelA.get("ward") != "undefined" && this.model.modelB.get("ward") != "undefined",
         modelA_ward: this.model.modelA.get("ward"),
         modelA_stats: this.model.modelA.get("stats"),
         modelA_avgDays: this.model.modelA.avgDaysToCloseRequests(),
